@@ -26,13 +26,13 @@
       <scope>test</scope>
     </dependency>
 
-    <!-- <dependency>
+    <dependency>
       <groupId>com.github.spotbugs</groupId>
       <artifactId>spotbugs</artifactId>
       <version>4.0.1</version>
     </dependency>
     
-   </dependencies>  -->
+   </dependencies>
 
   <reporting>
     <plugins>
