@@ -1,5 +1,7 @@
 package uvsq21606235;
 
+import java.util.ArrayList;
+
 public class Triangle extends Formes {
 
 	/**
@@ -12,6 +14,8 @@ public class Triangle extends Formes {
 			return p[indice].clone();
 	}
 	
+	
+	 
 	protected Triangle(String nomF,Point p1,Point p2, Point p3) {
 		super(nomF);
 		// TODO Auto-generated constructor stub
