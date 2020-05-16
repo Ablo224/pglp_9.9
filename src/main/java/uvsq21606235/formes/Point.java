@@ -1,4 +1,4 @@
-package uvsq21606235;
+package uvsq21606235.formes;
 
 public class Point {
 	
