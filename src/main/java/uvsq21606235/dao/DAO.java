@@ -7,21 +7,21 @@ public abstract class DAO<T> {
 	/**
 	 * ajouter un élément
 	 */
-	public abstract T creation(T Object);
+	public abstract T create(T Object);
 	
 	/**
-	 * obtentio d'un élément
+	 * obtention d'un élément
 	 */
-	//public abstract T obtenirElement();
+	public abstract T find(String nomF);
 	
 	/**
 	 * supprimer un élément
 	 */
-	public abstract void supprimerElement(T Object);
+	public abstract void delete(T Object);
 	
 	/**
 	 * mise à jour
 	 */
-	public abstract T miseAjour(T object);
+	public abstract T update(T object);
 	
 }
