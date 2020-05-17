@@ -45,7 +45,7 @@ public class DaoCarreJdbc extends DAO<Carre> {
             verif = prepare.executeUpdate();
             conn.close();
         } catch (SQLException e) {
-            return null;
+        	System.out.println(e.getMessage());
         }
 		
 		if(verif > 0) {
