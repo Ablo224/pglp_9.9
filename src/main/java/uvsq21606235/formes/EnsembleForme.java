@@ -10,7 +10,7 @@ public class EnsembleForme extends Formes implements Iterable<Formes> {
 	 */
 	private ArrayList<Formes> lesFormes;
 	
-	protected EnsembleForme(String nomF) {
+	public EnsembleForme(String nomF) {
 		super(nomF);
 		// TODO Auto-generated constructor stub
 		lesFormes = new ArrayList<Formes>();

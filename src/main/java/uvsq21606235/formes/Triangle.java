@@ -15,7 +15,7 @@ public class Triangle extends Formes {
 	
 	
 	 
-	protected Triangle(String nomF,Point p1,Point p2, Point p3) {
+	public Triangle(String nomF,Point p1,Point p2, Point p3) {
 		super(nomF);
 		// TODO Auto-generated constructor stub
 		p = new Point[3];

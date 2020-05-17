@@ -31,7 +31,7 @@ public class Rectangle extends Formes {
 	
 	
 	
-	protected Rectangle(String nomF,Point origine,double longueur, double largeur) {
+	public Rectangle(String nomF,Point origine,double longueur, double largeur) {
 		super(nomF);
 		// TODO Auto-generated constructor stub
 		this.origine = origine.clone();

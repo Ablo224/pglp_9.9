@@ -13,7 +13,7 @@ public class Cercle extends Formes {
 		this.rayon = rayon;
 	}
 	
-	public Point getCenre() {
+	public Point getCentre() {
 		return this.centre.clone();
 	}
 	
