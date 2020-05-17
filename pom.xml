@@ -36,10 +36,9 @@
 
   	<!-- https://mvnrepository.com/artifact/org.apache.derby/derby -->
       <dependency>
-          <groupId>org.apache.derby</groupId>
+           <groupId>org.apache.derby</groupId>
           <artifactId>derby</artifactId>
-          <version>10.15.2.0</version>
-          <scope>test</scope>
+          <version>10.8.3.0</version>
       </dependency> 
 </dependencies>
 

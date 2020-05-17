@@ -32,12 +32,30 @@ public abstract class BaseDeDonnees {
 		 * @return
 		 */
 		public static Connection connection() {
-		 try {
-		         return DriverManager.getConnection("jdbc:derby:" + nomBdd + ";create=true");
-		    } catch (SQLException e) {
+//		 try {	
+//		        return DriverManager.getConnection("jdbc:derby:" + nomBdd + ";create=true");
+//		    } catch (SQLException e) {
+//		        e.printStackTrace();
+//		    }
+//		    return null;
+			Connection conn = null;
+			String driver = "org.apache.derby.jdbc.EmbeddedDriver";
+		    try {
+		        Class.forName(driver); 
+		    } catch(java.lang.ClassNotFoundException e) {
 		        e.printStackTrace();
 		    }
-		    return null;
+
+		    final String DATABASE_URL = "jdbc:derby:myDB;create=true;user=doubleB;password=pass";
+
+		    try {  
+		             conn = DriverManager.getConnection(DATABASE_URL, "doubleB", "pass"); 
+		    }
+		    catch (SQLException sqlException)                                
+		    {                                                                  
+		        sqlException.printStackTrace();
+		    }   
+		    return conn;
 		}
 		
 		/**
