@@ -7,7 +7,7 @@ public class Cercle extends Formes {
 	
 	private double rayon;
 	
-	public Cercle(String nomF, Point centre,double cote) {
+	public Cercle(String nomF, Point centre,double rayon) {
 		super(nomF);
 		this.centre = centre.clone();
 		this.rayon = rayon;

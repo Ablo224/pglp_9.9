@@ -1,6 +1,5 @@
 package uvsq21606235.formes;
 
-import java.util.ArrayList;
 
 public class Triangle extends Formes {
 

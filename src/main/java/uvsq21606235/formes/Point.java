@@ -31,7 +31,7 @@ public class Point {
 	 * obtention de l'abscisse
 	 * @return
 	 */
-	double getX() {
+	public double getX() {
 		return this.x;
 	}
 	
@@ -39,7 +39,7 @@ public class Point {
 	 * obtention de l'ordonné
 	 * @return
 	 */
-	double getY() {
+	public double getY() {
 		return this.y;
 	}
 	
@@ -53,13 +53,13 @@ public class Point {
 	
 	@Override
 	public String toString() {
-		return "( "+x +"," + y +"  )";
+		return "("+x+","+y+")";
 		
 	}
 	
 	public void deplace(double x, double y) {
-		this.x = x;
-		this.y = y;
+		this.x += x;
+		this.y += y;
 	}
 
 }

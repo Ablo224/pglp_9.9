@@ -1,6 +1,5 @@
 package uvsq21606235.dao;
 
-import java.util.Map;
 
 public abstract class DAO<T> {
 	
