@@ -31,7 +31,7 @@ public abstract class BaseDeDonnees {
 		 * connexion à la bdd
 		 * @return
 		 */
-		public static Connection getConnection() {
+		public static Connection connection() {
 		 try {
 		         return DriverManager.getConnection("jdbc:derby:" + nomBdd + ";create=true");
 		    } catch (SQLException e) {
@@ -162,13 +162,21 @@ public abstract class BaseDeDonnees {
 	    }
 		
 		
-		
-		
-		
-		
-		
-		
-		
+		/**
+		 * création effectif de la base de données en ajoutant les tables
+		 * @throws Exception
+		 */
+		 public static void creatonEffectifDeLaBdd() throws Exception {
+		        Connection conn = BaseDeDonnees.connection();
+		        BaseDeDonnees.createTableForme(conn);
+		        BaseDeDonnees.creatTableTriangle(conn);
+		        BaseDeDonnees.creatTableCarre(conn);
+		        BaseDeDonnees.creatTableCercle(conn);
+		        BaseDeDonnees.creatTableRectangle(conn);
+		        BaseDeDonnees.creationTableEnsembleForme(conn);
+		        BaseDeDonnees.creationTableDeLien(conn);
+		        conn.close();
+		    }
 }
 
 
