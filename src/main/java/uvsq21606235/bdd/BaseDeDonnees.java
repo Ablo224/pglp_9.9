@@ -48,55 +48,26 @@ public abstract class BaseDeDonnees {
 		 */
 		
 		private static void createTableForme(Connection conn)throws SQLException {
-	        String table = "create table Formes ("
+	        String forme = "create table Formes ("
 	                + "nomForme varchar(20) not null primary key"
 	                + ")";
-	        Statement stat = conn.createStatement();
-	        stat.execute(table);
-	    }
-		
-		/**
-		 * création de la table carre
-		 * @param conn
-		 * @throws SQLException
-		 */
-		private static void creatTableCarre(Connection conn)throws SQLException {
-	        String laTable = "create table Carre ("
+	        String carre = "create table Carre ("
 	                + "nomForme varchar(20) not null primary key,"
 	                + "origine_x double,"
 	                + "origine_y double,"
 	                + "cote double,"
 	                + "foreign key (nomForme) references Formes (nomForme) ON DELETE CASCADE"
 	                + ")";
-	        Statement etat = conn.createStatement();
-	        etat.execute(laTable);
-	    }
-		
-		/**
-		 * création de la table cercle
-		 * @param conn
-		 * @throws SQLException
-		 */
-		private static void creatTableCercle(Connection conn)throws SQLException {
-	        String laTable = "create table Cercle ("
+	    
+	        String cercle = "create table Cercle ("
 	                + "nomForme varchar(20) not null primary key,"
 	                + "centre_x double,"
 	                + "centre_y double,"
 	                + "rayon double,"
 	                + "foreign key (nomForme) references Formes (nomForme) ON DELETE CASCADE"
 	                + ")";
-	        Statement etat = conn.createStatement();
-	        etat.execute(laTable);
-	    }
-		
-		
-		/**
-		 * création de la table rectangle
-		 * @param conn
-		 * @throws SQLException
-		 */
-		private static void creatTableRectangle(Connection conn)throws SQLException {
-	        String laTable = "create table Rectangle ("
+	        
+	        String rectangle = "create table Rectangle ("
 	                + "nomForme varchar(20) not null primary key,"
 	                + "origine_x double,"
 	                + "origine_y double,"
@@ -104,17 +75,8 @@ public abstract class BaseDeDonnees {
 	                + "largeur double,"
 	                + "foreign key (nomForme) references Formes (nomForme) ON DELETE CASCADE"
 	                + ")";
-	        Statement etat = conn.createStatement();
-	        etat.execute(laTable);
-	    }
-		
-		/**
-		 * création de la table rectangle
-		 * @param conn
-		 * @throws SQLException
-		 */
-		private static void creatTableTriangle(Connection conn) throws SQLException {
-	        String laTable = "create table Triangle ("
+	 
+	        String triangle = "create table Triangle ("
 	                + "nomForme varchar(20) not null primary key,"
 	                + "p1_x double,"
 	                + "p1_y double,"
@@ -124,34 +86,13 @@ public abstract class BaseDeDonnees {
 	                + "p3_y double,"
 	                + "foreign key (nomForme) references Formes (nomForme) ON DELETE CASCADE"
 	                + ")";
-	        Statement etat = conn.createStatement();
-	        etat.execute(laTable);
-	    }
-		
-		
-		/**
-		 * création de la table regroupe l'ensemble des formes
-		 * @param conn
-		 * @throws SQLException
-		 */
-		private static void creationTableEnsembleForme(Connection conn) throws SQLException {
-	        String laTable = "create table EnsembleForme ("
+	 
+	        String ensembleForme = "create table EnsembleForme ("
 	                + "nomGroupe varchar(20) not null primary key,"
 	                + "foreign key (nomGroupe) references Formes (nomF)"
 	                + ")";
-	        Statement etat = conn.createStatement();
-	        etat.execute(laTable);
-	    }
-		
-		
-		/**
-		 * création de la relation resultante de l'ensemble des formes 
-		 * et de l'abstraction des formes
-		 * @param conn
-		 * @throws SQLException
-		 */
-		private static void creationTableDeLien(Connection conn) throws SQLException {
-	        String laTable = "create table Relation ("
+
+	        String relation = "create table Relation ("
 	                + "idG varchar(20),"
 	                + "idC varchar(20),"
 	                + "primary key (idG, idC),"
@@ -159,25 +100,31 @@ public abstract class BaseDeDonnees {
 	                + "foreign key (idC) references Formes (nomF)"
 	                + ")";
 	        Statement etat = conn.createStatement();
-	        etat.execute(laTable);
+	        etat.execute(forme);
+	        etat.execute(carre);
+	        etat.execute(cercle);
+	        etat.execute(rectangle);
+	        etat.execute(triangle);
+	        etat.execute(ensembleForme);
+	        etat.execute(relation);
 	    }
 		
 		
-		/**
-		 * création effectif de la base de données en ajoutant les tables
-		 * @throws Exception
-		 */
-		 public static void creatonEffectifDeLaBdd() throws Exception {
-		        Connection conn = BaseDeDonnees.connection();
-		        BaseDeDonnees.createTableForme(conn);
-		        BaseDeDonnees.creatTableTriangle(conn);
-		        BaseDeDonnees.creatTableCarre(conn);
-		        BaseDeDonnees.creatTableCercle(conn);
-		        BaseDeDonnees.creatTableRectangle(conn);
-		        BaseDeDonnees.creationTableEnsembleForme(conn);
-		        BaseDeDonnees.creationTableDeLien(conn);
-		        conn.close();
-		    }
+//		/**
+//		 * création effectif de la base de données en ajoutant les tables
+//		 * @throws Exception
+//		 */
+//		 public static void creatonEffectifDeLaBdd() throws Exception {
+//		        Connection conn = BaseDeDonnees.connection();
+//		        BaseDeDonnees.createTableForme(conn);
+//		        BaseDeDonnees.creatTableTriangle(conn);
+//		        BaseDeDonnees.creatTableCarre(conn);
+//		        BaseDeDonnees.creatTableCercle(conn);
+//		        BaseDeDonnees.creatTableRectangle(conn);
+//		        BaseDeDonnees.creationTableEnsembleForme(conn);
+//		        BaseDeDonnees.creationTableDeLien(conn);
+//		        conn.close();
+//		    }
 }
 
 
