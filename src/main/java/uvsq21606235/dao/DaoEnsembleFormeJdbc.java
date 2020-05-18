@@ -36,7 +36,7 @@ public class DaoEnsembleFormeJdbc extends DAO<EnsembleForme> {
     }
 	
 	@Override
-	public EnsembleForme create(EnsembleForme forme) {
+	public EnsembleForme create(EnsembleForme forme) throws SQLException {
 		// TODO Auto-generated method stub
         DaoFactoryJdbc factory = new DaoFactoryJdbc();
         try {
@@ -82,8 +82,9 @@ public class DaoEnsembleFormeJdbc extends DAO<EnsembleForme> {
 	 * retourne un ensemble de groupe
 	 * @param nomF
 	 * @return
+	 * @throws SQLException 
 	 */
-	public ArrayList<Formes> findGroupe(String nomF) {
+	public ArrayList<Formes> findGroupe(String nomF) throws SQLException {
 		String select =  "SELECT idC FROM Relation WHERE idG = ?";
         ArrayList<Formes> find = new ArrayList<Formes>();
         DaoFactoryJdbc factory = new DaoFactoryJdbc();
@@ -171,9 +172,10 @@ public class DaoEnsembleFormeJdbc extends DAO<EnsembleForme> {
 	
 	/**
 	 * mise à jour d'un element du DAO
+	 * @throws SQLException 
 	 */
 	@Override
-	public EnsembleForme update(EnsembleForme object) {
+	public EnsembleForme update(EnsembleForme object) throws SQLException {
 		// TODO Auto-generated method stub
 		ArrayList<Formes> listing = this.findGroupe(object.getNomForme());
 		

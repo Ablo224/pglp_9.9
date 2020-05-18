@@ -1,5 +1,6 @@
 package uvsq21606235.command;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import uvsq21606235.dao.DAO;
@@ -23,7 +24,7 @@ public class DeleteCommand implements Command{
 	}
 	
 	@Override
-	public void execute() {
+	public void execute() throws SQLException {
 		// TODO Auto-generated method stub
 		DaoFactoryJdbc dfj = new DaoFactoryJdbc();
 		

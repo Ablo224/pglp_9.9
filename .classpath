@@ -23,7 +23,8 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/home/ablo/Téléchargements/db-derby-10.15.2.0-bin/lib/derby.jar"/>
-	<classpathentry kind="lib" path="/home/ablo/Téléchargements/db-derby-10.15.2.0-bin/lib/derbyclient.jar"/>
+	<classpathentry kind="lib" path="/home/ablo/Documents/pglp_9.9/derby.jar"/>
+	<classpathentry kind="lib" path="/home/ablo/Documents/pglp_9.9/derbyrun.jar"/>
+	<classpathentry kind="lib" path="/home/ablo/Documents/pglp_9.9/derbytools.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

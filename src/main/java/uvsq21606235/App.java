@@ -1,5 +1,7 @@
 package uvsq21606235;
 
+import uvsq21606235.bdd.BaseDeDonnees;
+
 /**
  * Hello world!
  *
@@ -8,6 +10,9 @@ public class App
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+
+    	BaseDeDonnees conn =new BaseDeDonnees();
+	
+		conn.createtable();
     }
 }

@@ -1,5 +1,7 @@
 package uvsq21606235.command;
 
+import java.sql.SQLException;
+
 import uvsq21606235.dao.*;
 import uvsq21606235.dao.DaoFactoryJdbc;
 import uvsq21606235.formes.*;
@@ -13,7 +15,7 @@ public class CommandCreate implements Command {
     }
 
 	@Override
-	public void execute() {
+	public void execute() throws SQLException {
 		// TODO Auto-generated method stub
 		Formes f = null;
 		DaoFactoryJdbc dfj = new DaoFactoryJdbc();

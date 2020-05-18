@@ -1,5 +1,7 @@
 package uvsq21606235.command;
 
+import java.sql.SQLException;
+
 import uvsq21606235.dao.*;
 import uvsq21606235.formes.*;
 
@@ -16,7 +18,7 @@ public class MoveCommand implements Command {
 	}
 	
 	@Override
-	public void execute() {
+	public void execute() throws SQLException {
 		// TODO Auto-generated method stub
 		forme.deplace(p.getX(), p.getY());
 		DaoFactoryJdbc dfj = new DaoFactoryJdbc();
