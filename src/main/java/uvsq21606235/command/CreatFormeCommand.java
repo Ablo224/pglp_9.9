@@ -6,13 +6,52 @@ import uvsq21606235.dao.*;
 import uvsq21606235.dao.DaoFactoryJdbc;
 import uvsq21606235.formes.*;
 
-public class CommandCreate implements Command {
+public class CreatFormeCommand implements Command {
 	
-	private Formes forme;
+	private GestionFormes gestionFormes;
+	private String nom;
+	private String type;
+	private String param;
 	
-	public CommandCreate(Formes f) {
-        this.forme = f;
-    }
+	public CreatFormeCommand(GestionFormes gf,String nomForme, String typeForme, String paramForme)
+	{
+		this.gestionFormes = gf;
+		this.nom = nomForme;
+		this.type = typeForme;
+		this.param = paramForme;
+	}
+
+	@Override
+	public String execute()
+	{
+		return gestionFormes.creat(this.nom, this.type, this.param);
+	}
+	
+	public GestionFormes getGestionFormes() {
+		return gestionFormes;
+	}
+	
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+	
+//	private Formes forme;
+//	
+//	public CommandCreate(Formes f) {
+//        this.forme = f;
+//    }
 
 //	@Override
 //	public String execute() throws SQLException {

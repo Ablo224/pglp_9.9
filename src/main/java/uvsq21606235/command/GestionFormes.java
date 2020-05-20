@@ -65,7 +65,7 @@ public class GestionFormes {
 			String pX = tmpParam[0].substring(8, tmpParam[0].length()-1);
 			String pY = tmpParam[1].substring(0, tmpParam[1].length()-2);
 			String rayon = tmpParam[2].substring(0, tmpParam[2].length()-1);
-			this.formes.put(nom, new Cercle("Cercle", new Point(new Double(pX), new Double(pY)), new Double(rayon) ));
+			this.formes.put(nom, new Cercle("Cercle", new Point(new Integer(pX), new Integer(pY)), new Integer(rayon) ));
 			return nom + " est créé";
 		}
 		else if(type.equals("Carre"))
