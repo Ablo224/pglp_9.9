@@ -24,6 +24,10 @@ public class Carre extends Formes {
 		if(c > 0) this.cote = c;
 	}
 	
+	public void setOrigine(Point p) {
+		this.origine = p;
+	}
+	
 	
 	/**
 	 * affichage d'un carré
@@ -44,6 +48,48 @@ public class Carre extends Formes {
 		// TODO Auto-generated method stub
 		origine.deplace(x, y);
 		
+	}
+
+	@Override
+	public Point getCentre() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public double getRayon() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public Point getBd() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Point getH() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Point getBg() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public double getLargeur() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public double getLongueur() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }

@@ -35,12 +35,12 @@ private Connection conn = null;
             String inser =  "INSERT INTO Triangle (nomForme,p1_x, p1_y, p2_x, p2_y, p3_x, p3_y) VALUES(?, ?, ?, ?, ?, ?, ?)";
             prepare = conn.prepareStatement(inser);
             prepare.setString(1, t.getNomForme());
-            prepare.setDouble(2, t.getP(0).getX());
-            prepare.setDouble(3, t.getP(0).getY());
-            prepare.setDouble(2, t.getP(1).getX());
-            prepare.setDouble(3, t.getP(1).getY());
-            prepare.setDouble(2, t.getP(2).getX());
-            prepare.setDouble(3, t.getP(2).getY());
+            prepare.setDouble(2, t.getH().getX());
+            prepare.setDouble(3, t.getH().getY());
+            prepare.setDouble(2, t.getBg().getX());
+            prepare.setDouble(3, t.getBg().getY());
+            prepare.setDouble(2, t.getBd().getX());
+            prepare.setDouble(3, t.getBd().getY());
             verif = prepare.executeUpdate();
             conn.close();
         } catch (SQLException e) {
@@ -118,12 +118,12 @@ private Connection conn = null;
         try {
             PreparedStatement prepare = conn.prepareStatement(update);
             prepare.setString(1, t.getNomForme());
-            prepare.setDouble(2, t.getP(0).getX());
-            prepare.setDouble(3, t.getP(0).getY());
-            prepare.setDouble(2, t.getP(1).getX());
-            prepare.setDouble(3, t.getP(1).getY());
-            prepare.setDouble(2, t.getP(2).getX());
-            prepare.setDouble(3, t.getP(2).getY());
+            prepare.setDouble(2, t.getH().getX());
+            prepare.setDouble(3, t.getH().getY());
+            prepare.setDouble(2, t.getBg().getX());
+            prepare.setDouble(3, t.getBg().getY());
+            prepare.setDouble(2, t.getBd().getX());
+            prepare.setDouble(3, t.getBd().getY());
             verif = prepare.executeUpdate();
             if(verif > 0) {
             	System.out.println("La mise à jour de la  forme "+ t.getNomForme() + " a bien réussi ");

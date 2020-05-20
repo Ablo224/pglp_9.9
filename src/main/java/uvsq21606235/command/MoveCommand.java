@@ -18,7 +18,7 @@ public class MoveCommand implements Command {
 	}
 	
 	@Override
-	public void execute() throws SQLException {
+	public String execute() throws SQLException {
 		// TODO Auto-generated method stub
 		forme.deplace(p.getX(), p.getY());
 		DaoFactoryJdbc dfj = new DaoFactoryJdbc();
@@ -39,6 +39,7 @@ public class MoveCommand implements Command {
 			DAO<EnsembleForme> dEf = dfj.createDaoGroupeForme();
 			dEf.update((EnsembleForme) forme);
 		}
+		return null;
 	}
 
 }

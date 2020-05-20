@@ -57,4 +57,58 @@ public class EnsembleForme extends Formes implements Iterable<Formes> {
 			System.out.println(")");
 	}
 
+	@Override
+	public Point getCentre() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public double getRayon() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public Point getOrigine() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Point getBd() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Point getH() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Point getBg() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public double getCote() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public double getLargeur() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public double getLongueur() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 }

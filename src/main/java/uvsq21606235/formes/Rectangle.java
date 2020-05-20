@@ -28,6 +28,10 @@ public class Rectangle extends Formes {
 		if(l > 0) this.largeur = l;
 	}
 	
+	public void setOrigine(Point p) {
+		this.origine = p;
+	}
+	
 	
 	
 	
@@ -53,5 +57,41 @@ public class Rectangle extends Formes {
 		// TODO Auto-generated method stub
 		super.print();
 		System.out.println("longueur :"+ longueur +" largeur: "+ largeur +" Origine :"+ origine);
+	}
+
+	@Override
+	public Point getCentre() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public double getRayon() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public Point getBd() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Point getH() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Point getBg() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public double getCote() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }

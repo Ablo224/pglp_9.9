@@ -14,31 +14,31 @@ public class CommandCreate implements Command {
         this.forme = f;
     }
 
-	@Override
-	public void execute() throws SQLException {
-		// TODO Auto-generated method stub
-		Formes f = null;
-		DaoFactoryJdbc dfj = new DaoFactoryJdbc();
-		
-		if(forme.getClass() == Carre.class) {
-			DAO<Carre> dCa = dfj.createDaoCarre();
-			f = dCa.create((Carre) forme);
-		}else if(forme.getClass() == Rectangle.class) {
-			DAO<Rectangle> dRe = dfj.createDaoRectangle();
-			f = dRe.create((Rectangle) forme);
-		}else if(forme.getClass() == Cercle.class) {
-			DAO<Cercle> dCe = dfj.createDaoCercle();
-			f = dCe.create((Cercle) forme);
-		}else if(forme.getClass() == Triangle.class) {
-			DAO<Triangle> dTr = dfj.createDaoTriangle();
-			f = dTr.create((Triangle) forme);
-		}else {
-			DAO<EnsembleForme> dEf = dfj.createDaoGroupeForme();
-			f = dEf.create((EnsembleForme) forme);
-		}
-		if (f == null) {
-            System.err.println("Forme inexistante");
-        }
-	}
+//	@Override
+//	public String execute() throws SQLException {
+//		// TODO Auto-generated method stub
+//		Formes f = null;
+//		DaoFactoryJdbc dfj = new DaoFactoryJdbc();
+//		
+//		if(forme.getClass() == Carre.class) {
+//			DAO<Carre> dCa = dfj.createDaoCarre();
+//			f = dCa.create((Carre) forme);
+//		}else if(forme.getClass() == Rectangle.class) {
+//			DAO<Rectangle> dRe = dfj.createDaoRectangle();
+//			f = dRe.create((Rectangle) forme);
+//		}else if(forme.getClass() == Cercle.class) {
+//			DAO<Cercle> dCe = dfj.createDaoCercle();
+//			f = dCe.create((Cercle) forme);
+//		}else if(forme.getClass() == Triangle.class) {
+//			DAO<Triangle> dTr = dfj.createDaoTriangle();
+//			f = dTr.create((Triangle) forme);
+//		}else {
+//			DAO<EnsembleForme> dEf = dfj.createDaoGroupeForme();
+//			f = dEf.create((EnsembleForme) forme);
+//		}
+//		if (f == null) {
+//            System.err.println("Forme inexistante");
+//        }
+//	}
 
 }

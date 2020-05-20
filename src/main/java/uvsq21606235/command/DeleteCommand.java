@@ -24,7 +24,7 @@ public class DeleteCommand implements Command{
 	}
 	
 	@Override
-	public void execute() throws SQLException {
+	public String execute() throws SQLException {
 		// TODO Auto-generated method stub
 		DaoFactoryJdbc dfj = new DaoFactoryJdbc();
 		
@@ -46,6 +46,7 @@ public class DeleteCommand implements Command{
 				dEf.delete((EnsembleForme) f);
 			}
 		}
+		return null;
 	
 	}
 }
