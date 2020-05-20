@@ -42,31 +42,74 @@ public class GestionFormes {
 				forme = (Cercle)forme;
 				DAO<Cercle> dao = factory.createDaoCercle();
 				formes = dao.find(forme.getNomForme());
-				if(formes == null) {
-					return forme.getNomForme() +" n'existe pas";
+				if(forme == null) {
+					return "forme inexistante";
+				}else {
+					if(formes == null) {
+						return forme.getNomForme()+"(centre="+"("+forme.getCentre().getX()+","+forme.getCentre().getY()+")"+
+								",rayon="+forme.getRayon()+")";
+					}
+					return formes.getNomForme()+"(centre="+"("+formes.getCentre().getX()+","+formes.getCentre().getY()+")"+
+					",rayon="+formes.getRayon()+")";
 				}
-				return formes.getNomForme()+"(centre="+"("+formes.getCentre().getX()+","+formes.getCentre().getY()+")"+
-				",rayon="+formes.getRayon()+")";
+				
 
 			}
 			else if(forme instanceof Rectangle)
 			{
 				forme = (Rectangle)forme;
-				return forme.getNomForme()+"(point_haut_gauche="+"("+forme.getOrigine().getX()+","+forme.getOrigine().getY()+")"+
-				",Longueur="+forme.getLongueur()+",Largeur="+forme.getLargeur()+")";
+				DAO<Rectangle> dao = factory.createDaoRectangle();
+				formes = dao.find(forme.getNomForme());
+				if(forme == null) {
+					return "forme inexistante";
+				}else {
+					if(formes == null) {
+						return forme.getNomForme()+"(point_haut_gauche="+"("+forme.getOrigine().getX()+","+forme.getOrigine().getY()+")"+
+								",Longueur="+forme.getLongueur()+",Largeur="+forme.getLargeur()+")";
+					}
+					return formes.getNomForme()+"(point_haut_gauche="+"("+formes.getOrigine().getX()+","+formes.getOrigine().getY()+")"+
+					",Longueur="+formes.getLongueur()+",Largeur="+formes.getLargeur()+")";
+				}
+				
 			}
 			else if(forme instanceof Carre)
 			{
 				forme = (Carre)forme;
-				return forme.getNomForme()+"(Origine="+"("+forme.getOrigine().getX()+","+forme.getOrigine().getY()+")"+
-				", cote=("+forme.getCote()+")";
+				
+				DAO<Carre> dao = factory.createDaoCarre();
+				formes = dao.find(forme.getNomForme());
+				if(forme == null) {
+					return "forme inexistante";
+				}else {
+					if(formes == null) {
+						return forme.getNomForme()+"(Origine="+"("+forme.getOrigine().getX()+","+forme.getOrigine().getY()+")"+
+								", cote=("+forme.getCote()+")";
+					}
+					return formes.getNomForme()+"(Origine="+"("+formes.getOrigine().getX()+","+formes.getOrigine().getY()+")"+
+					", cote=("+formes.getCote()+")";
+				}
+				
+				
 			}
 			else if(forme instanceof Triangle)
 			{
 				forme = (Triangle)forme;
-				return forme.getNomForme()+"(point_haut="+"("+forme.getH().getX()+","+forme.getH().getY()+")"+
-				",point_bas_gouche=("+forme.getBg().getX()+","+forme.getBg().getY()+")"+
-				",point_bas_droit=("+forme.getBd().getX()+","+forme.getBd().getY()+")";
+				
+				DAO<Triangle> dao = factory.createDaoTriangle();
+				formes = dao.find(forme.getNomForme());
+				if(forme == null) {
+					return "forme inexistante";
+				}else {
+					if(formes == null) {
+						return forme.getNomForme()+"(point_haut="+"("+forme.getH().getX()+","+forme.getH().getY()+")"+
+								",point_bas_gouche=("+forme.getBg().getX()+","+forme.getBg().getY()+")"+
+								",point_bas_droit=("+forme.getBd().getX()+","+forme.getBd().getY()+")";
+					}
+					return formes.getNomForme()+"(point_haut="+"("+formes.getH().getX()+","+formes.getH().getY()+")"+
+					",point_bas_gouche=("+formes.getBg().getX()+","+formes.getBg().getY()+")"+
+					",point_bas_droit=("+formes.getBd().getX()+","+formes.getBd().getY()+")";
+				}
+			
 			}
 			else
 			{
