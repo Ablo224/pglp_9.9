@@ -22,7 +22,7 @@ public class CreatFormeCommand implements Command {
 	}
 
 	@Override
-	public String execute()
+	public String execute() throws SQLException
 	{
 		return gestionFormes.creat(this.nom, this.type, this.param);
 	}

@@ -37,14 +37,14 @@ private Connection conn = null;
             prepare.setString(1, t.getNomForme());
             prepare.setDouble(2, t.getH().getX());
             prepare.setDouble(3, t.getH().getY());
-            prepare.setDouble(2, t.getBg().getX());
-            prepare.setDouble(3, t.getBg().getY());
-            prepare.setDouble(2, t.getBd().getX());
-            prepare.setDouble(3, t.getBd().getY());
+            prepare.setDouble(4, t.getBg().getX());
+            prepare.setDouble(5, t.getBg().getY());
+            prepare.setDouble(6, t.getBd().getX());
+            prepare.setDouble(7, t.getBd().getY());
             verif = prepare.executeUpdate();
             conn.close();
         } catch (SQLException e) {
-            return null;
+        	System.out.println(e.getMessage());
         }
 		
 		if(verif > 0) {
@@ -120,10 +120,10 @@ private Connection conn = null;
             prepare.setString(1, t.getNomForme());
             prepare.setDouble(2, t.getH().getX());
             prepare.setDouble(3, t.getH().getY());
-            prepare.setDouble(2, t.getBg().getX());
-            prepare.setDouble(3, t.getBg().getY());
-            prepare.setDouble(2, t.getBd().getX());
-            prepare.setDouble(3, t.getBd().getY());
+            prepare.setDouble(4, t.getBg().getX());
+            prepare.setDouble(5, t.getBg().getY());
+            prepare.setDouble(6, t.getBd().getX());
+            prepare.setDouble(7, t.getBd().getY());
             verif = prepare.executeUpdate();
             if(verif > 0) {
             	System.out.println("La mise à jour de la  forme "+ t.getNomForme() + " a bien réussi ");

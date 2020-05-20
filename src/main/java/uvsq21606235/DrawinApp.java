@@ -14,6 +14,6 @@ public class DrawinApp
 	    {
 	    	GestionFormes gestionFormes = new GestionFormes();
 	    	DrawinTUI saisie = new DrawinTUI(gestionFormes);
-	    	saisie.saisieUser(args);
+	    	saisie.nextCOmmand(args);
 	    }
 }

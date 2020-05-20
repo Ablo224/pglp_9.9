@@ -1,5 +1,6 @@
 package uvsq21606235.command;
 
+import java.sql.SQLException;
 
 public class ViewFormeCommand implements Command{
 	
@@ -13,7 +14,7 @@ public class ViewFormeCommand implements Command{
 	}
 
 	@Override
-	public String execute()
+	public String execute() throws SQLException
 	{
 		return gestionFormes.view(this.f);
 	}

@@ -128,7 +128,7 @@ public class DaoEnsembleFormeJdbc extends DAO<EnsembleForme> {
 	public EnsembleForme find(String nomF) {
 		// TODO Auto-generated method stub
         EnsembleForme find = null;
-        String s = "SELECT * FROM GroupeForme WHERE nomForme = ?";
+        String s = "SELECT * FROM EnsembleForme WHERE nomForme = ?";
         try {
             PreparedStatement prepare = conn.prepareStatement(s);
             prepare.setString(1, nomF);
@@ -154,8 +154,8 @@ public class DaoEnsembleFormeJdbc extends DAO<EnsembleForme> {
 	@Override
 	public void delete(EnsembleForme object) {
 		// TODO Auto-generated method stub
-		String del = "DELETE FROM EnsembleForme WHERE variableName = ?";
-		String delF =  "DELETE FROM Formes WHERE variableName = ?";
+		String del = "DELETE FROM EnsembleForme WHERE nomForme = ?";
+		String delF =  "DELETE FROM Formes WHERE nomForme = ?";
         try {
             PreparedStatement prepare = conn.prepareStatement(del);
             prepare.setString(1, object.getNomForme());

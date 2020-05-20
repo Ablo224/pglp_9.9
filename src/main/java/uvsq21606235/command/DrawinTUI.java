@@ -57,7 +57,7 @@ public class DrawinTUI {
 		return "error";
 	}
 	
-	public void saisieUser(String[] args) throws Exception
+	public void nextCOmmand(String[] args) throws Exception
 	{
 		boolean exit = false;
 		boolean q = false;

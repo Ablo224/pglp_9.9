@@ -27,6 +27,7 @@ private Connection conn = null;
 	@Override
 	public Cercle create(Cercle c) {
 		// TODO Auto-generated method stub
+		System.out.println("je suis dans creat");
 		int verif = 0;
 		try {
             PreparedStatement prepare = conn.prepareStatement(
@@ -42,14 +43,15 @@ private Connection conn = null;
             prepare.setDouble(4, c.getRayon());
             verif = prepare.executeUpdate();
             conn.close();
-        } catch (SQLException e) {
-            return null;
+        }  catch (SQLException e) {
+        	System.out.println(e.getMessage());
         }
 		
 		if(verif > 0) {
 			System.out.println("Insertion d'un cercle réussi");
 			return c;
 		}
+		System.out.println("le cercle existe");
 		return c;
 			
 	}
@@ -83,7 +85,8 @@ private Connection conn = null;
             }
         } catch (SQLException e) {
             e.printStackTrace();
-            return null;
+            c = null;
+            return c;
         }
         return c;
   

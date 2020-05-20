@@ -26,8 +26,11 @@ public class DaoRectangleJdbc extends DAO<Rectangle>{
 	@Override
 	public Rectangle create(Rectangle c) {
 		// TODO Auto-generated method stub
+		System.out.println("Je suis dans creat rectangle");
 		int verif = 0;
 		try {
+			System.out.println("Je suis dans creat rectangle");
+
             PreparedStatement prepare = conn.prepareStatement(
                     "INSERT INTO Formes"
                     + " (nomForme)"+ " VALUES(?)");
@@ -39,11 +42,11 @@ public class DaoRectangleJdbc extends DAO<Rectangle>{
             prepare.setDouble(2, c.getOrigine().getX());
             prepare.setDouble(3, c.getOrigine().getY());
             prepare.setDouble(4, c.getLongueur());
-            prepare.setDouble(4, c.getLargeur());
+            prepare.setDouble(5, c.getLargeur());
             verif = prepare.executeUpdate();
             conn.close();
         } catch (SQLException e) {
-            return null;
+        	System.out.println(e.getMessage());
         }
 		
 		if(verif > 0) {
@@ -119,7 +122,7 @@ public class DaoRectangleJdbc extends DAO<Rectangle>{
             prepare.setDouble(2, c.getOrigine().getX());
             prepare.setDouble(3, c.getOrigine().getY());
             prepare.setDouble(4, c.getLongueur());
-            prepare.setDouble(4, c.getLargeur());
+            prepare.setDouble(5, c.getLargeur());
             verif = prepare.executeUpdate();
             if(verif > 0) {
             	System.out.println("La mise à jour de la  forme "+ c.getNomForme() + " a bien réussi ");

@@ -33,7 +33,7 @@ public  class BaseDeDonnees {
 		}
 		
 		
-		public void  createtable()  
+		public void  createtableForme()  
 		{
 				try {
 					
@@ -41,97 +41,21 @@ public  class BaseDeDonnees {
 						
 						Statement state = conn.createStatement();
 						DatabaseMetaData databaseMetadata = conn.getMetaData();
-					    ResultSet resultSet = databaseMetadata.getTables(null, null, "CERCLE", null);
-					    if (resultSet.next()) {
-							state.addBatch("DROP TABLE Cercle");
-					    }
-				    	state.addBatch(
-				    			 "create table Cercle ("
-				    		                + "nomForme varchar(20) not null primary key,"
-				    		                + "centre_x double,"
-				    		                + "centre_y double,"
-				    		                + "rayon double,"
-				    		                + "foreign key (nomForme) references Formes (nomForme) ON DELETE CASCADE"
-				    		                + ")");
-					    
-					    resultSet = databaseMetadata.getTables(null, null, "CARRE", null);
-					    if (resultSet.next()) {
-							state.addBatch("DROP TABLE Carre");
-					    }
-			    		state.addBatch(
-			    				 "create table Carre ("
-			    			                + "nomForme varchar(20) not null primary key,"
-			    			                + "origine_x double,"
-			    			                + "origine_y double,"
-			    			                + "cote double,"
-			    			                + "foreign key (nomForme) references Formes (nomForme) ON DELETE CASCADE"
-			    			                + ")");
-					    	
-					    resultSet = databaseMetadata.getTables(null, null, "TRIANGLE", null);
-					    if (resultSet.next()) {
-							state.addBatch("DROP TABLE Triangle");
-					    }
-					    	state.addBatch(
-					    			"create table Triangle ("
-					    	                + "nomForme varchar(20) not null primary key,"
-					    	                + "p1_x double,"
-					    	                + "p1_y double,"
-					    	                + "p2_x double,"
-					    	                + "p2_y double,"
-					    	                + "p3_x double,"
-					    	                + "p3_y double,"
-					    	                + "foreign key (nomForme) references Formes (nomForme) ON DELETE CASCADE"
-					    	                + ")");
-					    
-					    resultSet = databaseMetadata.getTables(null, null, "RECTANGLE", null);
-					    if (resultSet.next()) {
-							state.addBatch("DROP TABLE Rectangle");
-					    }
-					    	state.addBatch(
-					    			"create table Rectangle ("
-					    	                + "nomForme varchar(20) not null primary key,"
-					    	                + "origine_x double,"
-					    	                + "origine_y double,"
-					    	                + "longueur double,"
-					    	                + "largeur double,"
-					    	                + "foreign key (nomForme) references Formes (nomForme) ON DELETE CASCADE"
-					    	                + ")");
-					    
-					    resultSet = databaseMetadata.getTables(null, null, "FORMES", null);
+					    ResultSet resultSet = databaseMetadata.getTables(null, null, "Formes", null);
+
+						 resultSet = databaseMetadata.getTables(null, null, "Formes", null);
 					    if (resultSet.next()) {
 							state.addBatch("DROP TABLE Formes");
 					    }
-					    	state.addBatch( "create table Formes ("
-					                + "nomForme varchar(20) not null primary key"
-					                + ")");
-					    
-					    resultSet = databaseMetadata.getTables(null, null, "RELATION", null);
-
-					    if (resultSet.next()) {
-							state.addBatch("DROP TABLE Relation");
-					    }
-
-							
-							state.addBatch( "create table Relation ("
-					                + "idG varchar(20),"
-					                + "idC varchar(20),"
-					                + "primary key (idG, idC),"
-					                + "foreign key (idG) references EnsembleForme (nomGroupe),"
-					                + "foreign key (idC) references Formes (nomF)"
-					                + ")");
-					
-					  resultSet = databaseMetadata.getTables(null, null, "ENSEMBLEFORME", null);
-
-					  if (resultSet.next()) {
-							state.addBatch("DROP TABLE EnsembleForme");
-					    }
-					  	state.addBatch("create table EnsembleForme ("
-			                + "nomGroupe varchar(20) not null primary key,"
-			                + "foreign key (nomGroupe) references Formes (nomF)"
-			                + ")");
+				    	state.addBatch( "create table Formes ("
+				                + "nomForme varchar(20) not null primary key"
+				                + ")");
+				    	
+//			    	
 					   		
 					    state.executeBatch();
-
+					    
+					    System.out.println("création des tables réussi");
 			
 			
 					} catch (BatchUpdateException  e) {
@@ -153,6 +77,178 @@ public  class BaseDeDonnees {
 					}
 				
 		}
+		
+		public void creatTableEnsembleForme() {
+
+			try {
+				Connection conn =DriverManager.getConnection(url);
+				Statement state = conn.createStatement();
+				DatabaseMetaData databaseMetadata = conn.getMetaData();
+				ResultSet resultSet = databaseMetadata.getTables(null, null, "EnsembleForme", null);
+			    if (resultSet.next()) {
+					state.addBatch("DROP TABLE EnsembleForme");
+			    }
+			    state.addBatch("create table EnsembleForme ("
+		                + "nomForme varchar(20) not null  primary key,"
+		                + "foreign key (nomForme) references Formes (nomForme)"
+		                + ")");
+				state.executeBatch();
+				System.out.println("Groupe de formes créé");
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
+		}
+		
+		
+		public void creatTableCarre() {
+
+			try {
+				Connection conn =DriverManager.getConnection(url);
+				Statement state = conn.createStatement();
+				DatabaseMetaData databaseMetadata = conn.getMetaData();
+				ResultSet resultSet = databaseMetadata.getTables(null, null, "Carre", null);
+			    if (resultSet.next()) {
+					state.addBatch("DROP TABLE Carre");
+			    }
+				state.addBatch(
+	   				 "create table Carre ("
+	   			                + "nomForme varchar(20) not null primary key,"
+	   			                + "origine_x double,"
+	   			                + "origine_y double,"
+	   			                + "cote double,"
+	   			                + "foreign key (nomForme) references Formes (nomForme) ON DELETE CASCADE"
+	   			                + ")");
+				state.executeBatch();
+				System.out.println("Carré créé");
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
+		}
+	
+		public void creatTableCercle() {
+
+			try {
+				Connection conn =DriverManager.getConnection(url);
+				Statement state = conn.createStatement();
+				DatabaseMetaData databaseMetadata = conn.getMetaData();
+				ResultSet resultSet = databaseMetadata.getTables(null, null, "Cercle", null);
+			    if (resultSet.next()) {
+					state.addBatch("DROP TABLE Cercle");
+			    }
+				state.addBatch(
+		    			 "create table Cercle ("
+		    		                + "nomForme varchar(20) not null primary key,"
+		    		                + "centre_x double,"
+		    		                + "centre_y double,"
+		    		                + "rayon double,"
+		    		                + "foreign key (nomForme) references Formes (nomForme) ON DELETE CASCADE"
+		    		                + ")");
+				state.executeBatch();
+				System.out.println("Cercle créé");
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
+		}
+		
+		public void creatTableRectangle() {
+
+			try {
+				Connection conn =DriverManager.getConnection(url);
+				Statement state = conn.createStatement();
+				DatabaseMetaData databaseMetadata = conn.getMetaData();
+				ResultSet resultSet = databaseMetadata.getTables(null, null, "Rectangle", null);
+			    if (resultSet.next()) {
+					state.addBatch("DROP TABLE Rectangle");
+			    }
+			    state.addBatch(
+		    			"create table Rectangle ("
+		    	                + "nomForme varchar(20) not null primary key,"
+		    	                + "origine_x double,"
+		    	                + "origine_y double,"
+		    	                + "longueur double,"
+		    	                + "largeur double,"
+		    	                + "foreign key (nomForme) references Formes (nomForme) ON DELETE CASCADE"
+		    	                + ")");
+				state.executeBatch();
+				System.out.println("Rectangle créé");
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
+		}
+		
+		public void creatTableTriangle() {
+
+			try {
+				Connection conn =DriverManager.getConnection(url);
+				Statement state = conn.createStatement();
+				DatabaseMetaData databaseMetadata = conn.getMetaData();
+				
+				ResultSet resultSet = databaseMetadata.getTables(null, null, "Triangle", null);
+			    if (resultSet.next()) {
+					state.addBatch("DROP TABLE Triangle");
+			    }
+			    state.addBatch(
+		    			"create table Triangle ("
+		    	                + "nomForme varchar(20) not null primary key,"
+		    	                + "p1_x double,"
+		    	                + "p1_y double,"
+		    	                + "p2_x double,"
+		    	                + "p2_y double,"
+		    	                + "p3_x double,"
+		    	                + "p3_y double,"
+		    	                + "foreign key (nomForme) references Formes (nomForme) ON DELETE CASCADE"
+		    	                + ")");
+				state.executeBatch();
+				System.out.println("Triangle créé");
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
+		}
+		
+		public void creatTableRealation() {
+
+			try {
+				Connection conn =DriverManager.getConnection(url);
+				Statement state = conn.createStatement();
+				DatabaseMetaData databaseMetadata = conn.getMetaData();
+				
+				ResultSet resultSet = databaseMetadata.getTables(null, null, "Relation", null);
+			    if (resultSet.next()) {
+					state.addBatch("DROP TABLE Relation");
+			    }
+			    state.addBatch( "create table Relation ("
+		                + "idG varchar(20) not null,"
+		                + "idC varchar(20) not null,"
+		                + "primary key (idG, idC),"
+		                + "foreign key (idG) references EnsembleForme (nomForme),"
+		                + "foreign key (idC) references Formes (nomForme)"
+		                + ")");
+				state.executeBatch();
+				System.out.println("Relation de composition créé");
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
+		}
+		
+		
 	
 }
 

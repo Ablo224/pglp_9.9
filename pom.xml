@@ -16,7 +16,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
-    <main-class>uvsq21606235.App</main-class>
+    <main-class>uvsq21606235.DrawinApp</main-class>
   </properties>
 
   <dependencies>
@@ -38,7 +38,7 @@
       <dependency>
           <groupId>org.apache.derby</groupId>
           <artifactId>derby</artifactId>
-          <version>10.12.1.1</version>
+          <version>10.14.2.0</version>
           <scope>test</scope>
       </dependency> 
 </dependencies>
