@@ -5,12 +5,6 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-
-
-
-
-
-
 public class DrawinTUI {
 	
 	private Scanner saisie;
