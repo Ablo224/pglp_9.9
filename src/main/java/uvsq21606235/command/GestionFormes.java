@@ -33,83 +33,34 @@ public class GestionFormes {
 	@SuppressWarnings("unused")
 	public String view(String f) throws SQLException
 	{
-		Formes formes;
-//	    DaoFactoryJdbc factory = new DaoFactoryJdbc();
-		if(this.formes.containsKey(f)) //"Cercle(centre=(0,0),rayon=50)"
+
+		if(this.formes.containsKey(f)) 
 		{
 			Formes forme = this.formes.get(f);
 			if(forme instanceof Cercle)
 			{
-				forme = (Cercle)forme;
-//				DAO<Cercle> dao = factory.createDaoCercle();
-//				formes = dao.find(forme.getNomForme());
-//				if(forme == null) {
-//					return "forme inexistante";
-//				}else {
-//					if(formes == null) {
-//						return forme.getNomForme()+"(centre="+"("+forme.getCentre().getX()+","+forme.getCentre().getY()+")"+
-//								",rayon="+forme.getRayon()+")";
-//					}
 					return forme.getNomForme()+"(centre="+"("+forme.getCentre().getX()+","+forme.getCentre().getY()+")"+
 					",rayon="+forme.getRayon()+")";
-				
-				
 
 			}
 			else if(forme instanceof Rectangle)
 			{
-				forme = (Rectangle)forme;
-//				DAO<Rectangle> dao = factory.createDaoRectangle();
-//				formes = dao.find(forme.getNomForme());
-//				if(forme == null) {
-//					return "forme inexistante";
-//				}else {
-//					if(formes == null) {
-//						return forme.getNomForme()+"(point_haut_gauche="+"("+forme.getOrigine().getX()+","+forme.getOrigine().getY()+")"+
-//								",Longueur="+forme.getLongueur()+",Largeur="+forme.getLargeur()+")";
-//					}
 					return forme.getNomForme()+"(point_haut_gauche="+"("+forme.getOrigine().getX()+","+forme.getOrigine().getY()+")"+
 					",Longueur="+forme.getLongueur()+",Largeur="+forme.getLargeur()+")";
-				
-				
 			}
 			else if(forme instanceof Carre)
 			{
 				forme = (Carre)forme;
-				
-//				DAO<Carre> dao = factory.createDaoCarre();
-//				formes = dao.find(forme.getNomForme());
-//				if(forme == null) {
-//					return "forme inexistante";
-//				}else {
-//					if(formes == null) {
-//						return forme.getNomForme()+"(Origine="+"("+forme.getOrigine().getX()+","+forme.getOrigine().getY()+")"+
-//								", cote=("+forme.getCote()+")";
-//					}
-					return forme.getNomForme()+"(Origine="+"("+forme.getOrigine().getX()+","+forme.getOrigine().getY()+")"+
-					", cote=("+forme.getCote()+")";
-				
-				
-				
+				return forme.getNomForme()+"(Origine="+"("+forme.getOrigine().getX()+","+forme.getOrigine().getY()+")"+
+				", cote=("+forme.getCote()+")";	
 			}
 			else if(forme instanceof Triangle)
 			{
 				forme = (Triangle)forme;
 				
-//				DAO<Triangle> dao = factory.createDaoTriangle();
-//				formes = dao.find(forme.getNomForme());
-//				if(forme == null) {
-//					return "forme inexistante";
-//				}else {
-//					if(formes == null) {
-//						return forme.getNomForme()+"(point_haut="+"("+forme.getH().getX()+","+forme.getH().getY()+")"+
-//								",point_bas_gouche=("+forme.getBg().getX()+","+forme.getBg().getY()+")"+
-//								",point_bas_droit=("+forme.getBd().getX()+","+forme.getBd().getY()+")";
-//					}
-					return forme.getNomForme()+"(point_haut="+"("+forme.getH().getX()+","+forme.getH().getY()+")"+
-					",point_bas_gouche=("+forme.getBg().getX()+","+forme.getBg().getY()+")"+
-					",point_bas_droit=("+forme.getBd().getX()+","+forme.getBd().getY()+")";
-				
+				return forme.getNomForme()+"(point_haut="+"("+forme.getH().getX()+","+forme.getH().getY()+")"+
+				",point_bas_gouche=("+forme.getBg().getX()+","+forme.getBg().getY()+")"+
+				",point_bas_droit=("+forme.getBd().getX()+","+forme.getBd().getY()+")";
 			
 			}
 			else
@@ -124,103 +75,108 @@ public class GestionFormes {
 	{
 		String saisie= null;
 		 Formes f;
-	     //DaoFactoryJdbc factory = new DaoFactoryJdbc();
-		if(type.equals("Cercle"))
-		{
-			String[] tmpParam = param.split(" ");
-
-			String pX = tmpParam[0].substring(8, tmpParam[0].length()-1);
-			String pY = tmpParam[1].substring(0, tmpParam[1].length()-2);
-			String rayon = tmpParam[2].substring(0, tmpParam[2].length()-1);
-			this.formes.put(nom, new Cercle(nom, new Point(new Double(pX), new Double(pY)), new Double(rayon) ));
+		 if(!this.formes.containsKey(nom)) {
 			
-//			//demande la sauvegarde dans la base de donnée
-//			saisie = reponseUser();
-//			
-//			if(saisie.contentEquals("s") || saisie.contentEquals("S") || saisie.contentEquals("save")) {
-//				DAO<Cercle> dao = factory.createDaoCercle();
-//	            f = dao.create(new Cercle(nom, new Point(new Double(pX), new Double(pY)), new Double(rayon)));
-//	            return nom + " est créé";
-//			}
+		     DaoFactoryJdbc factory = new DaoFactoryJdbc();
+			if(type.equals("Cercle"))
+			{
+				String[] tmpParam = param.split(" ");
+	
+				String pX = tmpParam[0].substring(8, tmpParam[0].length()-1);
+				String pY = tmpParam[1].substring(0, tmpParam[1].length()-2);
+				String rayon = tmpParam[2].substring(0, tmpParam[2].length()-1);
+				this.formes.put(nom, new Cercle(nom, new Point(new Double(pX), new Double(pY)), new Double(rayon) ));
+				
+	//			//demande la sauvegarde dans la base de donnée
+	//			saisie = reponseUser();
+	//			
+	//			if(saisie.contentEquals("s") || saisie.contentEquals("S") || saisie.contentEquals("save")) {
+	//				DAO<Cercle> dao = factory.createDaoCercle();
+	//	            f = dao.create(new Cercle(nom, new Point(new Double(pX), new Double(pY)), new Double(rayon)));
+	//	            return nom + " est créé";
+	//			}
+				
+				return nom + " est créé mais pas sauvegarder dans la base de donnée";
+			}
+			else if(type.equals("Carre"))
+			{
+				String[] tmpParam = param.split(" ");
+				String hgX = tmpParam[0].substring(7, tmpParam[0].length()-1);
+				String hgY = tmpParam[1].substring(0, tmpParam[1].length()-2);
+	
+				String c = tmpParam[2].substring(0, tmpParam[2].length()-1);
+				this.formes.put(nom, new Carre("Carre", new Point(new Double(hgX), new Double(hgY)),new Double(c)));
+				
+	//			//demande la sauvegarde dans la base de donnée
+	//			saisie = reponseUser();
+	//			
+	//			if(saisie.contentEquals("s") || saisie.contentEquals("S") || saisie.contentEquals("save")) {
+	//				DAO<Carre> dao = factory.createDaoCarre();
+	//	            f = dao.create(new Carre(nom, new Point(new Double(hgX), new Double(hgY)),new Double(c)));
+	//	            return nom + " est créé";
+	//			}
+				return nom + " est créé mais pas sauvegarder dans la base de donnée";
+				
+				
+			}
+			else if(type.equals("Rectangle"))
+			{
+				String[] tmpParam = param.split(" ");
+				String hgX = tmpParam[0].substring(11, tmpParam[0].length()-1);
+				String hgY = tmpParam[1].substring(0, tmpParam[1].length()-2);
+				String ln = tmpParam[2].substring(1, tmpParam[2].length()-1);
+				String la = tmpParam[3].substring(0, tmpParam[3].length()-2);
+				this.formes.put(nom, new Rectangle(nom, new Point(new Double(hgX), new Double(hgY)),
+														new Double(ln), new Double(la)));
+				
+	//			//demande la sauvegarde dans la base de donnée
+	//			saisie = reponseUser();
+	//			
+	//			if(saisie.contentEquals("s") || saisie.contentEquals("S") || saisie.contentEquals("save")) {
+	//				DAO<Rectangle> dao = factory.createDaoRectangle();
+	//	            f = dao.create(new Rectangle(nom, new Point(new Double(hgX), new Double(hgY)),
+	//						new Double(ln), new Double(la)));
+	//	            return nom + " est créé";
+	//			}
+	//			
+				return nom + " est créé mais pas sauvegarder dans la base de donnée";
+			}
+			else if(type.equals("Triangle"))
+			{
+				String[] tmpParam = param.split(" ");
+				String hX = tmpParam[0].substring(10, tmpParam[0].length()-1);
+				String hY = tmpParam[1].substring(0, tmpParam[1].length()-2);
+				String bgX = tmpParam[2].substring(1, tmpParam[2].length()-1);
+				String bgY = tmpParam[3].substring(0, tmpParam[3].length()-2);
+				String bdX = tmpParam[4].substring(1, tmpParam[4].length()-1);
+				String bdY = tmpParam[5].substring(0, tmpParam[5].length()-2);
+				this.formes.put(nom, new Triangle(nom, new Point(new Double(hX), new Double(hY)),
+															  new Point(new Double(bgX), new Double(bgY)),
+															  new Point(new Double(bdX), new Double(bdY))
+															  ));
+				//demande la sauvegarde dans la base de donnée
+	//			saisie = reponseUser();
+	//			
+	//			if(saisie.contentEquals("s") || saisie.contentEquals("S") || saisie.contentEquals("save")) {
+	//				DAO<Triangle> dao = factory.createDaoTriangle();
+	//	            f = dao.create(new Triangle(nom, new Point(new Double(hX), new Double(hY)),
+	//						  new Point(new Double(bgX), new Double(bgY)),
+	//						  new Point(new Double(bdX), new Double(bdY))
+	//						  ));
+	//	            
+	//	            return nom + " est créé";
+	//			}
+				
+				return nom + " est créé mais pas sauvegarder dans la base de donnée";
+			}
 			
-			return nom + " est créé mais pas sauvegarder dans la base de donnée";
-		}
-		else if(type.equals("Carre"))
-		{
-			String[] tmpParam = param.split(" ");
-			String hgX = tmpParam[0].substring(7, tmpParam[0].length()-1);
-			String hgY = tmpParam[1].substring(0, tmpParam[1].length()-2);
-
-			String c = tmpParam[2].substring(0, tmpParam[2].length()-1);
-			this.formes.put(nom, new Carre("Carre", new Point(new Double(hgX), new Double(hgY)),new Double(c)));
-			
-//			//demande la sauvegarde dans la base de donnée
-//			saisie = reponseUser();
-//			
-//			if(saisie.contentEquals("s") || saisie.contentEquals("S") || saisie.contentEquals("save")) {
-//				DAO<Carre> dao = factory.createDaoCarre();
-//	            f = dao.create(new Carre(nom, new Point(new Double(hgX), new Double(hgY)),new Double(c)));
-//	            return nom + " est créé";
-//			}
-			return nom + " est créé mais pas sauvegarder dans la base de donnée";
-			
-			
-		}
-		else if(type.equals("Rectangle"))
-		{
-			String[] tmpParam = param.split(" ");
-			String hgX = tmpParam[0].substring(11, tmpParam[0].length()-1);
-			String hgY = tmpParam[1].substring(0, tmpParam[1].length()-2);
-			String ln = tmpParam[2].substring(1, tmpParam[2].length()-1);
-			String la = tmpParam[3].substring(0, tmpParam[3].length()-2);
-			this.formes.put(nom, new Rectangle(nom, new Point(new Double(hgX), new Double(hgY)),
-													new Double(ln), new Double(la)));
-			
-//			//demande la sauvegarde dans la base de donnée
-//			saisie = reponseUser();
-//			
-//			if(saisie.contentEquals("s") || saisie.contentEquals("S") || saisie.contentEquals("save")) {
-//				DAO<Rectangle> dao = factory.createDaoRectangle();
-//	            f = dao.create(new Rectangle(nom, new Point(new Double(hgX), new Double(hgY)),
-//						new Double(ln), new Double(la)));
-//	            return nom + " est créé";
-//			}
-//			
-			return nom + " est créé mais pas sauvegarder dans la base de donnée";
-		}
-		else if(type.equals("Triangle"))
-		{
-			String[] tmpParam = param.split(" ");
-			String hX = tmpParam[0].substring(10, tmpParam[0].length()-1);
-			String hY = tmpParam[1].substring(0, tmpParam[1].length()-2);
-			String bgX = tmpParam[2].substring(1, tmpParam[2].length()-1);
-			String bgY = tmpParam[3].substring(0, tmpParam[3].length()-2);
-			String bdX = tmpParam[4].substring(1, tmpParam[4].length()-1);
-			String bdY = tmpParam[5].substring(0, tmpParam[5].length()-2);
-			this.formes.put(nom, new Triangle(nom, new Point(new Double(hX), new Double(hY)),
-														  new Point(new Double(bgX), new Double(bgY)),
-														  new Point(new Double(bdX), new Double(bdY))
-														  ));
-			//demande la sauvegarde dans la base de donnée
-//			saisie = reponseUser();
-//			
-//			if(saisie.contentEquals("s") || saisie.contentEquals("S") || saisie.contentEquals("save")) {
-//				DAO<Triangle> dao = factory.createDaoTriangle();
-//	            f = dao.create(new Triangle(nom, new Point(new Double(hX), new Double(hY)),
-//						  new Point(new Double(bgX), new Double(bgY)),
-//						  new Point(new Double(bdX), new Double(bdY))
-//						  ));
-//	            
-//	            return nom + " est créé";
-//			}
-			
-			return nom + " est créé mais pas sauvegarder dans la base de donnée";
-		}
-		
-		else
-		{
-			return "Impossible de créer" + nom;
-		}
+			else
+			{
+				return "Impossible de créer" + nom;
+			}
+		 }else {
+			return "Cette figure existe";
+		 }
 		
 	}
 

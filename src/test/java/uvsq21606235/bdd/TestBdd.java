@@ -26,8 +26,6 @@ public class TestBdd {
 
 	}
 	
-
-
 	
 	@Test
 	public void testCreatCarre() {

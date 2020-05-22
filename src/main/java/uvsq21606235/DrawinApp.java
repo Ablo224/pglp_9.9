@@ -1,8 +1,8 @@
 package uvsq21606235;
 
-import uvsq21606235.bdd.BaseDeDonnees;
-import uvsq21606235.command.DrawinTUI;
-import uvsq21606235.command.GestionFormes;
+import uvsq21606235.*;
+import uvsq21606235.command.*;
+
 
 /**
  * Hello world!
