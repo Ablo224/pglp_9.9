@@ -10,6 +10,12 @@ import uvsq21606235.formes.*;
 
 import uvsq21606235.command.*;
 
+/**
+ * test de l'affichage des formes
+ * @author ablo
+ *
+ */
+
 public class TestViewCommand {
 
 	@Test

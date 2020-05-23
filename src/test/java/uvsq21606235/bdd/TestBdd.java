@@ -5,6 +5,12 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+
+/**
+ * test de création de la bdd et de ces tables
+ * @author ablo
+ *
+ */
 public class TestBdd {
 
 	@Before
@@ -12,13 +18,10 @@ public class TestBdd {
 		BaseDeDonnees bdd = new BaseDeDonnees();
 		bdd.deleteTables();
 		bdd.createtableForme();
-	}
-	
-	@Test
-	public void testCreatEnsembleForme() {
-		BaseDeDonnees bdd = new BaseDeDonnees();
 		bdd.creatTableEnsembleForme();
 	}
+	
+
 	
 	@Test
 	public void testCreatCercle() {

@@ -5,6 +5,13 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
+
+/**
+ * interface utilisateur
+ * @author ablo
+ *
+ */
+
 public class DrawinTUI {
 	
 	private Scanner saisie;

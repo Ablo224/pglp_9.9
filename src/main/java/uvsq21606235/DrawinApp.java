@@ -5,7 +5,8 @@ import uvsq21606235.command.*;
 
 
 /**
- * Hello world!
+ * class principale qui lance l'application
+ * @author ablo
  *
  */
 public class DrawinApp 

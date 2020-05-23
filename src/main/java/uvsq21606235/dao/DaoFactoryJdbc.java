@@ -8,6 +8,12 @@ import uvsq21606235.bdd.BaseDeDonnees;
 
 import uvsq21606235.formes.*;
 
+/**
+ * 
+ * @author ablo
+ *
+ */
+
 public class DaoFactoryJdbc {
 	
 	
@@ -35,7 +41,7 @@ public class DaoFactoryJdbc {
 //    }
    
  
-    public DAO<Cercle> createDaoCercle() {
+    public DAO<Cercle> createDaoCercle() throws SQLException {
         return new DaoCercleJdbc(conn);
     }
     

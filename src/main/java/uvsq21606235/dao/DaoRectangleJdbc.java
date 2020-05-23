@@ -1,21 +1,23 @@
 package uvsq21606235.dao;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import uvsq21606235.formes.Rectangle;
+import uvsq21606235.bdd.BaseDeDonnees;
 import uvsq21606235.formes.Point;
 
 
 public class DaoRectangleJdbc extends DAO<Rectangle>{
 
-	private Connection conn = null;
+	private static Connection conn;
 	
 	
-	public DaoRectangleJdbc(Connection conn) {
-		// TODO Auto-generated constructor stub
+	
+	public DaoRectangleJdbc(Connection conn)  {
 		this.conn = conn;
 	}
 
@@ -29,8 +31,6 @@ public class DaoRectangleJdbc extends DAO<Rectangle>{
 		System.out.println("Je suis dans creat rectangle");
 		int verif = 0;
 		try {
-			System.out.println("Je suis dans creat rectangle");
-
             PreparedStatement prepare = conn.prepareStatement(
                     "INSERT INTO Formes"
                     + " (nomForme)"+ " VALUES(?)");
@@ -69,7 +69,6 @@ public class DaoRectangleJdbc extends DAO<Rectangle>{
         Rectangle c = null;
         
         try {
-        	
             PreparedStatement prepare = conn.prepareStatement(select);
             prepare.setString(1, nomF);
             prepare.execute();

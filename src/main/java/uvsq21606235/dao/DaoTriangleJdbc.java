@@ -1,20 +1,22 @@
 package uvsq21606235.dao;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import uvsq21606235.bdd.BaseDeDonnees;
 import uvsq21606235.formes.Point;
 import uvsq21606235.formes.Triangle;
 
 public class DaoTriangleJdbc extends DAO<Triangle> {
-
-private Connection conn = null;
+	
+	private static Connection conn;
 	
 	
-	public DaoTriangleJdbc(Connection conn) {
-		// TODO Auto-generated constructor stub
+	
+	public DaoTriangleJdbc(Connection conn)  {
 		this.conn = conn;
 	}
 
@@ -67,7 +69,6 @@ private Connection conn = null;
         Triangle c = null;
         
         try {
-        	
             PreparedStatement prepare = conn.prepareStatement(select);
             prepare.setString(1, nomF);
             prepare.execute();

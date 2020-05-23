@@ -11,6 +11,12 @@ import uvsq21606235.dao.DAO;
 import uvsq21606235.dao.DaoFactoryJdbc;
 import uvsq21606235.formes.*;
 
+/**
+ * la classe qui gère l'affichage, la création
+ * et le deplacement des formes
+ * @author ablo
+ *
+ */
 
 
 public class GestionFormes {
@@ -22,18 +28,20 @@ public class GestionFormes {
 		this.formes = new HashMap<> ();
 	}
 	
-//	public String reponseUser() {
-//		String saisie= null;
-//		Scanner sc = new Scanner(System.in);
-//		System.out.println("Sauvegarder la figure s/n ?");
-//		return saisie = sc.nextLine();
-//		
-//	}
+	
+	//demande de sauvegarde
+	public String reponseUser() {
+		String saisie= null;
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Sauvegarder la figure s/n ?");
+		return saisie = sc.nextLine();
+		
+	}
 
 	@SuppressWarnings("unused")
 	public String view(String f) throws SQLException
 	{
-
+		
 		if(this.formes.containsKey(f)) 
 		{
 			Formes forme = this.formes.get(f);
@@ -68,7 +76,7 @@ public class GestionFormes {
 				return " cette forme n'existe pas";
 			}
 		}
-		return " cette forme n'existe pas";
+		return " forme non existante";
 	}
 
 	public String creat(String nom, String type, String param) throws SQLException
@@ -77,7 +85,7 @@ public class GestionFormes {
 		 Formes f;
 		 if(!this.formes.containsKey(nom)) {
 			
-		     DaoFactoryJdbc factory = new DaoFactoryJdbc();
+		     //DaoFactoryJdbc factory = new DaoFactoryJdbc();
 			if(type.equals("Cercle"))
 			{
 				String[] tmpParam = param.split(" ");
@@ -87,16 +95,16 @@ public class GestionFormes {
 				String rayon = tmpParam[2].substring(0, tmpParam[2].length()-1);
 				this.formes.put(nom, new Cercle(nom, new Point(new Double(pX), new Double(pY)), new Double(rayon) ));
 				
-	//			//demande la sauvegarde dans la base de donnée
-	//			saisie = reponseUser();
-	//			
-	//			if(saisie.contentEquals("s") || saisie.contentEquals("S") || saisie.contentEquals("save")) {
-	//				DAO<Cercle> dao = factory.createDaoCercle();
-	//	            f = dao.create(new Cercle(nom, new Point(new Double(pX), new Double(pY)), new Double(rayon)));
-	//	            return nom + " est créé";
-	//			}
+				//demande la sauvegarde dans la base de donnée
+//				saisie = reponseUser();
+//				
+//				if(saisie.contentEquals("s") || saisie.contentEquals("S") || saisie.contentEquals("save")) {
+//					DAO<Cercle> dao = factory.createDaoCercle();
+//		            f = dao.create(new Cercle(nom, new Point(new Double(pX), new Double(pY)), new Double(rayon)));
+//		            return nom + " est créé";
+//				}
 				
-				return nom + " est créé mais pas sauvegarder dans la base de donnée";
+				return nom + " est créé et sauvegardé";
 			}
 			else if(type.equals("Carre"))
 			{
@@ -107,15 +115,15 @@ public class GestionFormes {
 				String c = tmpParam[2].substring(0, tmpParam[2].length()-1);
 				this.formes.put(nom, new Carre("Carre", new Point(new Double(hgX), new Double(hgY)),new Double(c)));
 				
-	//			//demande la sauvegarde dans la base de donnée
-	//			saisie = reponseUser();
-	//			
-	//			if(saisie.contentEquals("s") || saisie.contentEquals("S") || saisie.contentEquals("save")) {
-	//				DAO<Carre> dao = factory.createDaoCarre();
-	//	            f = dao.create(new Carre(nom, new Point(new Double(hgX), new Double(hgY)),new Double(c)));
-	//	            return nom + " est créé";
-	//			}
-				return nom + " est créé mais pas sauvegarder dans la base de donnée";
+				//demande la sauvegarde dans la base de donnée
+//				saisie = reponseUser();
+				
+//				if(saisie.contentEquals("s") || saisie.contentEquals("S") || saisie.contentEquals("save")) {
+//					DAO<Carre> dao = factory.createDaoCarre();
+//		            f = dao.create(new Carre(nom, new Point(new Double(hgX), new Double(hgY)),new Double(c)));
+//		            return nom + " est créé";
+//				}
+				return nom + " est créé et sauvegardé";
 				
 				
 			}
@@ -139,7 +147,7 @@ public class GestionFormes {
 	//	            return nom + " est créé";
 	//			}
 	//			
-				return nom + " est créé mais pas sauvegarder dans la base de donnée";
+				return nom + " est créé et sauvegardé";
 			}
 			else if(type.equals("Triangle"))
 			{
@@ -167,12 +175,12 @@ public class GestionFormes {
 	//	            return nom + " est créé";
 	//			}
 				
-				return nom + " est créé mais pas sauvegarder dans la base de donnée";
+				return nom + " est créé et sauvegardé";
 			}
 			
 			else
 			{
-				return "Impossible de créer" + nom;
+				return "Impossible de créer" + nom+ "verifiez l'agencement des paramètres";
 			}
 		 }else {
 			return "Cette figure existe";
@@ -183,7 +191,7 @@ public class GestionFormes {
 	public String move(String f, String param)
 	{
 
-		if(this.formes.containsKey(f)) //"Cercle(centre=(0,0),rayon=50)"
+		if(this.formes.containsKey(f)) 
 		{
 			Formes forme = this.formes.get(f);
 			if(forme instanceof Cercle) 
@@ -197,7 +205,7 @@ public class GestionFormes {
 				((Cercle) forme).setCentre(c);
 				
 				
-				return "move success";
+				return forme.getNomForme()+" deplacée avec succès";
 			}
 			else if(forme instanceof Rectangle)
 			{
@@ -210,7 +218,7 @@ public class GestionFormes {
 				((Rectangle) forme).setOrigine(p);
 				
 				
-				return "move success";
+				return forme.getNomForme()+" deplacée avec succès";
 			}
 			else if(forme instanceof Carre)
 			{
@@ -224,7 +232,7 @@ public class GestionFormes {
 				
 				((Carre) forme).setOrigine(p);
 				
-				return "move success";
+				return forme.getNomForme()+" deplacée avec succès";
 			}
 			else if(forme instanceof Triangle)
 			{
@@ -239,14 +247,14 @@ public class GestionFormes {
 				((Triangle) forme).setBg(p);
 				
 
-				return "move success";
+				return forme.getNomForme()+" deplacée avec succès";
 			}
 			else
 			{	
-				return " cette forme n'existe pas 1";
+				return " cette forme n'existe pas!!!";
 			}
 		}
-		else if(f.contains("All"))
+		else if(f.contains("All") || f.contains("all"))
 		{
 			Set<String> list = this.formes.keySet();
 			Iterator<String> iterator = list.iterator();
@@ -256,69 +264,9 @@ public class GestionFormes {
 				String cle = key.toString(); 
 				move(cle, param);
 			}
-			return "success";
-		}
-		else if(f.contains("Cercle") )
-		{
-			Set<String> list = this.formes.keySet();
-			Iterator<String> iterator = list.iterator();
-			while(iterator.hasNext())
-			{
-				Object key = iterator.next();
-				String cle = key.toString(); 
-				if(this.formes.get(cle).getNomForme().contains("Cercle"))
-				{
-					move(cle, param);
-				}
-			}
-			return "success";
-		}
-		else if(f.contains("Carre"))
-		{
-			Set<String> list = this.formes.keySet();
-			Iterator<String> iterator = list.iterator();
-			while(iterator.hasNext())
-			{
-				Object key = iterator.next();
-				String cle = key.toString(); 
-				if(this.formes.get(cle).getNomForme().contains("Carre"))
-				{
-					move(cle, param);
-				}
-			}
-			return "success";
-		}
-		else if(f.contains("Rectangle"))
-		{
-			Set<String> list = this.formes.keySet();
-			Iterator<String> iterator = list.iterator();
-			while(iterator.hasNext())
-			{
-				Object key = iterator.next();
-				String cle = key.toString(); 
-				if(this.formes.get(cle).getNomForme().contains("Rectangle"))
-				{
-					move(cle, param);
-				}
-			}
-			return "success";
-		}
-		else if(f.contains("Triangle"))
-		{
-			Set<String> list = this.formes.keySet();
-			Iterator<String> iterator = list.iterator();
-			while(iterator.hasNext())
-			{
-				Object key = iterator.next();
-				String cle = key.toString(); 
-				if(this.formes.get(cle).getNomForme().contains("Triangle"))
-				{
-					move(cle, param);
-				}
-			}
-			return "success";
-		}
-		return " cette forme n'existe pas 2";
+			return "Toutes les formes ont été deplacé avec succès";
+		}		
+		return " Aucune forme de cet nom n'existe";
 	}
 
 	public Map<String, Formes> getFormes() {

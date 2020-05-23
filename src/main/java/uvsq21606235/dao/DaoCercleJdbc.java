@@ -1,24 +1,29 @@
 package uvsq21606235.dao;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import edu.umd.cs.findbugs.gui2.Driver;
+import uvsq21606235.bdd.BaseDeDonnees;
 import uvsq21606235.formes.Cercle;
 import uvsq21606235.formes.Cercle;
 import uvsq21606235.formes.Point;
 
 public class DaoCercleJdbc extends DAO<Cercle>{
 
-private Connection conn = null;
+private static Connection conn;
 	
 	
 	
-	public DaoCercleJdbc(Connection conn) {
-		// TODO Auto-generated constructor stub
-		this.conn = conn;
+	public DaoCercleJdbc(Connection conn) throws SQLException {
+		this.conn = DriverManager.getConnection(BaseDeDonnees.url);
 	}
+
+
+	
 
 
 	/**
@@ -29,8 +34,8 @@ private Connection conn = null;
 		// TODO Auto-generated method stub
 		System.out.println("je suis dans creat");
 		int verif = 0;
-		try {
-            PreparedStatement prepare = conn.prepareStatement(
+		try {Connection connec = BaseDeDonnees.getConnection();
+            PreparedStatement prepare = connec.prepareStatement(
                     "INSERT INTO Formes"
                     + " (nomForme)"+ " VALUES(?)");
                     prepare.setString(1, c.getNomForme());
@@ -42,7 +47,7 @@ private Connection conn = null;
             prepare.setDouble(3, c.getCentre().getY());
             prepare.setDouble(4, c.getRayon());
             verif = prepare.executeUpdate();
-            conn.close();
+            connec.close();
         }  catch (SQLException e) {
         	System.out.println(e.getMessage());
         }
@@ -68,7 +73,6 @@ private Connection conn = null;
         Cercle c = null;
         
         try {
-        	
             PreparedStatement prepare = conn.prepareStatement(select);
             prepare.setString(1, nomF);
             prepare.execute();

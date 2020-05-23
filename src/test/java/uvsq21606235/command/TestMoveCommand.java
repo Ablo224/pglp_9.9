@@ -9,6 +9,11 @@ import org.junit.Test;
 import uvsq21606235.*;
 import uvsq21606235.formes.*;
 
+/**
+ * test du pattern MoveCommand
+ * @author ablo
+ *
+ */
 
 public class TestMoveCommand {
 
@@ -19,10 +24,7 @@ public class TestMoveCommand {
 		g.getFormes().put("f", f);
 		MoveFormeCommand v = new MoveFormeCommand(g, "f", "(7, 7))");
 		System.out.println(v.execute());
-		assertTrue(v.execute().equals("move success") );
-		ViewFormeCommand v1 = new ViewFormeCommand(g, "f");
-		assertTrue(v1.execute().equals("Tr(point_haut=(7.0,7.0),point_bas_gouche=(7.0,7.0),point_bas_droit=(7.0,7.0)"));
-
+		assertTrue(v.execute().equals(f.getNomForme()+" deplacée avec succès") );
 	}
 	
 	@Test
@@ -33,7 +35,7 @@ public class TestMoveCommand {
 		MoveFormeCommand v = new MoveFormeCommand(g, "f", "(7, 7))");
 		System.out.println(v.execute());
 		assertTrue(((Rectangle) f).getOrigine().getX() == 7.0 && ((Rectangle) f).getOrigine().getY()==7.0);
-		assertTrue(v.execute().equals("move success") );
+		assertTrue(v.execute().equals(f.getNomForme()+" deplacée avec succès") );
 	}
 	
 	@Test
@@ -44,7 +46,7 @@ public class TestMoveCommand {
 		MoveFormeCommand v = new MoveFormeCommand(g, "f", "(7, 7))");
 		System.out.println(v.execute());
 		assertTrue(((Carre) f).getOrigine().getX() == 7.0 && ((Carre) f).getOrigine().getY()==7.0);
-		assertTrue(v.execute().equals("move success") );
+		assertTrue(v.execute().equals(f.getNomForme()+" deplacée avec succès") );
 	}
 	
 	@Test
@@ -55,7 +57,7 @@ public class TestMoveCommand {
 		MoveFormeCommand v = new MoveFormeCommand(g, "f", "(7, 7))");
 		System.out.println(v.execute());
 		assertTrue(((Cercle) f).getCentre().getX() == 7.0 && ((Cercle) f).getCentre().getY()==7.0);
-		assertTrue(v.execute().equals("move success") );
+		assertTrue(v.execute().equals(f.getNomForme()+" deplacée avec succès") );
 	}
 
 }

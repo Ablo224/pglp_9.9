@@ -12,19 +12,20 @@ import uvsq21606235.formes.Point;
 
 public class TestDaoFindJdbc {
 
-	@Test
-	public void testCreateCarre() throws SQLException{
-		
-		DaoFactoryJdbc df = new DaoFactoryJdbc();
-		DAO<Carre> daoC = df.createDaoCarre();
-		DAO<EnsembleForme> daoG = df.createDaoGroupeForme();
-		
-		EnsembleForme g5 = new EnsembleForme("G");
-		assertNotNull(daoG.create(g5));
-		Carre c = new Carre("Ca", new Point(2,3), 3);
-		assertNotNull(daoC.create(c));
-		assertNotNull(daoC.find(c.getNomForme()));
-	}
+//	@Test
+//	public void testFindCarre() throws SQLException{
+//		
+//		DaoFactoryJdbc df = new DaoFactoryJdbc();
+//		DAO<Carre> daoC = df.createDaoCarre();
+//		DAO<EnsembleForme> daoG = df.createDaoGroupeForme();
+//		
+//		EnsembleForme g5 = new EnsembleForme("G");
+//		assertNotNull(daoG.create(g5));
+//		Carre c = new Carre("Ca", new Point(2,3), 3);
+//		assertNotNull(daoC.create(c));
+//		
+//		//assertNotNull(daoC.find(c.getNomForme()));
+//	}
 	
 	
 }

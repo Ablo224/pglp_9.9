@@ -9,6 +9,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Properties;
 
+/**
+ * class qui crée la bdd et les tables
+ * @author ablo
+ *
+ */
 public  class BaseDeDonnees {
 
 		
@@ -23,7 +28,7 @@ public  class BaseDeDonnees {
 		
 		
 		
-		public  BaseDeDonnees() {
+		public   BaseDeDonnees() {
 			// TODO Auto-generated constructor stub
 			   Properties connectionProps = new Properties();
 		        connectionProps.put("user", user);
@@ -32,12 +37,21 @@ public  class BaseDeDonnees {
 			
 		}
 		
+		public static Connection getConnection() {
+	        try {
+	            return DriverManager.getConnection(url);
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	        return null;
+	    }
+		
 		
 		public void  createtableForme()  
 		{
 				try {
 					
-						Connection conn =DriverManager.getConnection(url);
+						Connection conn =BaseDeDonnees.getConnection();
 						
 						Statement state = conn.createStatement();
 						DatabaseMetaData databaseMetadata = conn.getMetaData();
@@ -51,8 +65,6 @@ public  class BaseDeDonnees {
 				                + "nomForme varchar(20) not null primary key"
 				                + ")");
 				    	
-//			    	
-					   		
 					    state.executeBatch();
 					    
 					    System.out.println("création des tables réussi");
@@ -78,10 +90,14 @@ public  class BaseDeDonnees {
 				
 		}
 		
+		
+		/**
+		 * création de la table des groupes de formes
+		 */
 		public void creatTableEnsembleForme() {
 
 			try {
-				Connection conn =DriverManager.getConnection(url);
+				Connection conn =BaseDeDonnees.getConnection();
 				Statement state = conn.createStatement();
 				DatabaseMetaData databaseMetadata = conn.getMetaData();
 				ResultSet resultSet = databaseMetadata.getTables(null, null, "EnsembleForme", null);
@@ -106,7 +122,7 @@ public  class BaseDeDonnees {
 		public void creatTableCarre() {
 
 			try {
-				Connection conn =DriverManager.getConnection(url);
+				Connection conn =BaseDeDonnees.getConnection();
 				Statement state = conn.createStatement();
 				DatabaseMetaData databaseMetadata = conn.getMetaData();
 				ResultSet resultSet = databaseMetadata.getTables(null, null, "Carre", null);
@@ -134,13 +150,8 @@ public  class BaseDeDonnees {
 		public void creatTableCercle() {
 
 			try {
-				Connection conn =DriverManager.getConnection(url);
+				Connection conn =BaseDeDonnees.getConnection();
 				Statement state = conn.createStatement();
-				DatabaseMetaData databaseMetadata = conn.getMetaData();
-				ResultSet resultSet = databaseMetadata.getTables(null, null, "Cercle", null);
-			    if (resultSet.next()) {
-					state.addBatch("DROP TABLE Cercle");
-			    }
 				state.addBatch(
 		    			 "create table Cercle ("
 		    		                + "nomForme varchar(20) not null primary key,"
@@ -150,7 +161,7 @@ public  class BaseDeDonnees {
 		    		                + "foreign key (nomForme) references Formes (nomForme) ON DELETE CASCADE"
 		    		                + ")");
 				state.executeBatch();
-				System.out.println("Cercle créé");
+				System.out.println("Table Cercle créé");
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -162,13 +173,8 @@ public  class BaseDeDonnees {
 		public void creatTableRectangle() {
 
 			try {
-				Connection conn =DriverManager.getConnection(url);
+				Connection conn =BaseDeDonnees.getConnection();
 				Statement state = conn.createStatement();
-				DatabaseMetaData databaseMetadata = conn.getMetaData();
-				ResultSet resultSet = databaseMetadata.getTables(null, null, "Rectangle", null);
-			    if (resultSet.next()) {
-					state.addBatch("DROP TABLE Rectangle");
-			    }
 			    state.addBatch(
 		    			"create table Rectangle ("
 		    	                + "nomForme varchar(20) not null primary key,"
@@ -191,14 +197,9 @@ public  class BaseDeDonnees {
 		public void creatTableTriangle() {
 
 			try {
-				Connection conn =DriverManager.getConnection(url);
+				Connection conn =BaseDeDonnees.getConnection();
 				Statement state = conn.createStatement();
-				DatabaseMetaData databaseMetadata = conn.getMetaData();
-				
-				ResultSet resultSet = databaseMetadata.getTables(null, null, "Triangle", null);
-			    if (resultSet.next()) {
-					state.addBatch("DROP TABLE Triangle");
-			    }
+
 			    state.addBatch(
 		    			"create table Triangle ("
 		    	                + "nomForme varchar(20) not null primary key,"
@@ -223,14 +224,9 @@ public  class BaseDeDonnees {
 		public void creatTableRealation() {
 
 			try {
-				Connection conn =DriverManager.getConnection(url);
+				Connection conn =BaseDeDonnees.getConnection();
 				Statement state = conn.createStatement();
-				DatabaseMetaData databaseMetadata = conn.getMetaData();
-				
-				ResultSet resultSet = databaseMetadata.getTables(null, null, "Relation", null);
-			    if (resultSet.next()) {
-					state.addBatch("DROP TABLE Relation");
-			    }
+
 			    state.addBatch( "create table Relation ("
 		                + "idG varchar(20) not null,"
 		                + "idC varchar(20) not null,"
@@ -238,7 +234,7 @@ public  class BaseDeDonnees {
 		                + "foreign key (idG) references EnsembleForme (nomForme),"
 		                + "foreign key (idC) references Formes (nomForme)"
 		                + ")");
-				//state.executeBatch();
+				state.executeBatch();
 				System.out.println("Relation de composition créé");
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
@@ -252,7 +248,7 @@ public  class BaseDeDonnees {
 
 			Statement stat = null;
 	        try {
-				Connection conn =DriverManager.getConnection(url);
+	        	Connection conn =BaseDeDonnees.getConnection();
 
 	            stat = conn.createStatement();
 	        } catch (SQLException e) {

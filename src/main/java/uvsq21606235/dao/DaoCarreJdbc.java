@@ -12,9 +12,14 @@ import uvsq21606235.bdd.BaseDeDonnees;
 import uvsq21606235.formes.Carre;
 import uvsq21606235.formes.Point;
 
+/**
+ * 
+ * @author ablo
+ *
+ */
 public class DaoCarreJdbc extends DAO<Carre> {
 
-	private Connection conn = null;
+	private static Connection conn;
 	
 	
 	
@@ -71,7 +76,7 @@ public class DaoCarreJdbc extends DAO<Carre> {
         
         try {
         	Statement statement = conn.createStatement();
-        		    ResultSet resultat = statement.executeQuery(select);
+        		    ResultSet resultat = statement.executeQuery("SELECT * FROM Carre WHERE nomForme ="+ nomF);
         	
 //            PreparedStatement prepare = conn.prepareStatement(select);
 //            prepare.setString(1, nomF);

@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import java.sql.SQLException;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import uvsq21606235.formes.Carre;
@@ -13,9 +14,13 @@ import uvsq21606235.formes.Point;
 import uvsq21606235.formes.Rectangle;
 import uvsq21606235.formes.Triangle;
 
+/**
+ * test des methode de création du DAo
+ * @author ablo
+ *
+ */
+
 public class TestDaoCreateJdbc {
-	
-	
 	
 	@Test
 	public void testCreateCarre() throws SQLException{
@@ -28,6 +33,7 @@ public class TestDaoCreateJdbc {
 		assertNotNull(daoG.create(g1)); 
 		Carre c = new Carre("Ca", new Point(2,3), 3);
 		assertNotNull(daoC.create(c));
+		
 	}
 	
 	

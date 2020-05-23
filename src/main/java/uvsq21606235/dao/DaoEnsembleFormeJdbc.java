@@ -1,19 +1,22 @@
 package uvsq21606235.dao;
 
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import uvsq21606235.bdd.BaseDeDonnees;
 import uvsq21606235.formes.*;
 
 public class DaoEnsembleFormeJdbc extends DAO<EnsembleForme> {
 
-	private Connection conn;
+	private static Connection conn;
 	
-	public DaoEnsembleFormeJdbc(Connection conn) {
-		// TODO Auto-generated constructor stub
+	
+	
+	public DaoEnsembleFormeJdbc(Connection conn)  {
 		this.conn = conn;
 	}
 	
