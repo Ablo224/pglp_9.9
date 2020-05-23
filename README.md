@@ -4,8 +4,10 @@ mvn clean
 mvn package
 java -jar target/pglp_9.9-1.0-SNAPSHOT.jar
 ################################################################################################
- Guide d'utilisation une fois l'application exécutée                                          
- ----------------------Format valide pour créer des figures :-----------                     
+# Guide d'utilisation une fois l'application exécutée   
+
+ ----------------Format valide pour créer des figures :----------- 
+ 
  Création Rectangle: ---Re = Rectangle((origine_x, origine_y), (Longueur, largeur))           
 Création Carre:  ------Ca = Carre((origine_x, origine_y), coté)                              
 Création Cercle: ------Ce = Cercle((centre_x, centre_y ), rayon)                             
