@@ -10,6 +10,7 @@ public class TestBdd {
 	@Before
 	public void testCreatForme() {
 		BaseDeDonnees bdd = new BaseDeDonnees();
+		bdd.deleteTables();
 		bdd.createtableForme();
 	}
 	

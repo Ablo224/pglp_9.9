@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import uvsq21606235.bdd.BaseDeDonnees;
 import uvsq21606235.formes.Carre;
 import uvsq21606235.formes.Point;
 
@@ -17,9 +18,10 @@ public class DaoCarreJdbc extends DAO<Carre> {
 	
 	
 	
-	public DaoCarreJdbc(Connection conn) {
+	public DaoCarreJdbc(Connection conn) throws SQLException {
 		// TODO Auto-generated constructor stub
-		this.conn = conn;
+		BaseDeDonnees bdd = new BaseDeDonnees();
+		this.conn = DriverManager.getConnection(bdd.url);
 	}
 
 
@@ -64,18 +66,22 @@ public class DaoCarreJdbc extends DAO<Carre> {
 	public Carre find(String nomF) {
 		// TODO Auto-generated method stub
         
-        String select = "SELECT * FROM Carre WHERE nomForme = ?";
+        String select = "SELECT * FROM Carre WHERE nomForme ="+ nomF;
         Carre c = null;
         
         try {
+        	Statement statement = conn.createStatement();
+        		    ResultSet resultat = statement.executeQuery(select);
         	
-            PreparedStatement prepare = conn.prepareStatement(select);
-            prepare.setString(1, nomF);
-            prepare.execute();
-            ResultSet resultat = prepare.getResultSet();
+//            PreparedStatement prepare = conn.prepareStatement(select);
+//            prepare.setString(1, nomF);
+//            prepare.execute();
+//            ResultSet resultat = prepare.getResultSet();
             
             if (resultat.next()) {
+            	System.out.println("find");
                 try {
+                	
                     c = new Carre(nomF,new Point(resultat.getDouble("origine_x"),resultat.getDouble("origine_y"))
                     		, resultat.getDouble("cote"));
                 } catch (Exception e) {

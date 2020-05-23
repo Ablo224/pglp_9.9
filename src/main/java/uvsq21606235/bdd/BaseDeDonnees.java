@@ -238,7 +238,7 @@ public  class BaseDeDonnees {
 		                + "foreign key (idG) references EnsembleForme (nomForme),"
 		                + "foreign key (idC) references Formes (nomForme)"
 		                + ")");
-				state.executeBatch();
+				//state.executeBatch();
 				System.out.println("Relation de composition créé");
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
@@ -247,6 +247,46 @@ public  class BaseDeDonnees {
 			
 			
 		}
+		
+		public static void deleteTables() {
+
+			Statement stat = null;
+	        try {
+				Connection conn =DriverManager.getConnection(url);
+
+	            stat = conn.createStatement();
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	        try {
+	            stat.execute("drop table Relation");
+	        } catch (SQLException e) {
+	        }
+	        try {
+	            stat.execute("drop table Cercle");
+	        } catch (SQLException e) {
+	        }
+	        try {
+	            stat.execute("drop table Rectangle");
+	        } catch (SQLException e) {
+	        }
+	        try {
+	            stat.execute("drop table Carre");
+	        } catch (SQLException e) {
+	        }
+	        try {
+	            stat.execute("drop table Triangle");
+	        } catch (SQLException e) {
+	        }
+	        try {
+	            stat.execute("drop table EnsembleForme");
+	        } catch (SQLException e) {
+	        }
+	        try {
+	            stat.execute("drop table Formes");
+	        } catch (SQLException e) {
+	        }
+	    }
 		
 		
 	

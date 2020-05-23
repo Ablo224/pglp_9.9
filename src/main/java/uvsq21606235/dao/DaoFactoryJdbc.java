@@ -39,7 +39,7 @@ public class DaoFactoryJdbc {
         return new DaoCercleJdbc(conn);
     }
     
-    public DAO<Carre> createDaoCarre() {
+    public DAO<Carre> createDaoCarre() throws SQLException {
         return new DaoCarreJdbc(conn);
     }
   

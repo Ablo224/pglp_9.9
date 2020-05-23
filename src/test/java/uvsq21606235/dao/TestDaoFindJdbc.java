@@ -20,7 +20,9 @@ public class TestDaoFindJdbc {
 		DAO<EnsembleForme> daoG = df.createDaoGroupeForme();
 		
 		EnsembleForme g5 = new EnsembleForme("G");
+		assertNotNull(daoG.create(g5));
 		Carre c = new Carre("Ca", new Point(2,3), 3);
+		assertNotNull(daoC.create(c));
 		assertNotNull(daoC.find(c.getNomForme()));
 	}
 	
