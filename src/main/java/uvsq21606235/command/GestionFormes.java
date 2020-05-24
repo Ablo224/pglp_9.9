@@ -39,7 +39,7 @@ public class GestionFormes {
 	}
 
 	@SuppressWarnings("unused")
-	public String view(String f) throws SQLException
+	public String view(String f)
 	{
 		
 		if(this.formes.containsKey(f)) 
@@ -60,7 +60,7 @@ public class GestionFormes {
 			{
 				forme = (Carre)forme;
 				return forme.getNomForme()+"(Origine="+"("+forme.getOrigine().getX()+","+forme.getOrigine().getY()+")"+
-				", cote=("+forme.getCote()+")";	
+				", cote="+forme.getCote()+")";	
 			}
 			else if(forme instanceof Triangle)
 			{
@@ -79,7 +79,7 @@ public class GestionFormes {
 		return " forme non existante";
 	}
 
-	public String creat(String nom, String type, String param) throws SQLException
+	public String creat(String nom, String type, String param) 
 	{
 		String saisie= null;
 		 Formes f;
@@ -104,7 +104,8 @@ public class GestionFormes {
 //		            return nom + " est créé";
 //				}
 				
-				return nom + " est créé et sauvegardé";
+//				return nom + " est créé et sauvegardé";
+				return this.view(nom);
 			}
 			else if(type.equals("Carre"))
 			{
@@ -123,7 +124,7 @@ public class GestionFormes {
 //		            f = dao.create(new Carre(nom, new Point(new Double(hgX), new Double(hgY)),new Double(c)));
 //		            return nom + " est créé";
 //				}
-				return nom + " est créé et sauvegardé";
+				return this.view(nom);
 				
 				
 			}
@@ -147,7 +148,7 @@ public class GestionFormes {
 	//	            return nom + " est créé";
 	//			}
 	//			
-				return nom + " est créé et sauvegardé";
+				return this.view(nom);
 			}
 			else if(type.equals("Triangle"))
 			{
@@ -175,7 +176,7 @@ public class GestionFormes {
 	//	            return nom + " est créé";
 	//			}
 				
-				return nom + " est créé et sauvegardé";
+				return this.view(nom);
 			}
 			
 			else
@@ -188,7 +189,7 @@ public class GestionFormes {
 		
 	}
 
-	public String move(String f, String param)
+	public String move(String f, String param) 
 	{
 
 		if(this.formes.containsKey(f)) 
@@ -205,7 +206,7 @@ public class GestionFormes {
 				((Cercle) forme).setCentre(c);
 				
 				
-				return forme.getNomForme()+" deplacée avec succès";
+				return f+" deplacée avec succès: " + this.view(f);
 			}
 			else if(forme instanceof Rectangle)
 			{
@@ -218,7 +219,7 @@ public class GestionFormes {
 				((Rectangle) forme).setOrigine(p);
 				
 				
-				return forme.getNomForme()+" deplacée avec succès";
+				return f+" deplacée avec succès:  " + this.view(f);
 			}
 			else if(forme instanceof Carre)
 			{
@@ -232,7 +233,7 @@ public class GestionFormes {
 				
 				((Carre) forme).setOrigine(p);
 				
-				return forme.getNomForme()+" deplacée avec succès";
+				return f+" deplacée avec succès: " + this.view(f);
 			}
 			else if(forme instanceof Triangle)
 			{
@@ -247,7 +248,7 @@ public class GestionFormes {
 				((Triangle) forme).setBg(p);
 				
 
-				return forme.getNomForme()+" deplacée avec succès";
+				return f+" deplacée avec succès: " + this.view(f);
 			}
 			else
 			{	

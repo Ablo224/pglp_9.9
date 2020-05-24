@@ -47,7 +47,7 @@ public class TestViewCommand {
 		f.getFormes().put("c", c);
 		ViewFormeCommand v = new ViewFormeCommand(f, "c");
 		System.out.println(v.execute());
-		assertTrue(v.execute().equals("Ca(Origine=(2.0,5.0), cote=(7.0)"));
+		assertTrue(v.execute().equals("Ca(Origine=(2.0,5.0), cote=7.0)"));
 	}
 	
 	@Test
